@@ -158,7 +158,7 @@
     });
 
     gsap.from(".hero__media", { opacity: 0, scale: 1.06, duration: 1.6, ease: "power2.out" });
-    gsap.from(".hero__bottom", { opacity: 0, y: 26, duration: 0.9, ease: "power3.out", delay: 0.7, clearProps: "all" });
+    gsap.from(".hero__bottom", { opacity: 0, y: 26, duration: 0.9, ease: "power3.out", delay: 0.7 });
   };
 
   /* ---------------------------------------------------------
@@ -174,7 +174,6 @@
         duration: 0.9,
         ease: "power3.out",
         scrollTrigger: { trigger: el, start: "top 88%" },
-        clearProps: "transform",
       });
     });
   };
@@ -200,95 +199,51 @@
   };
 
   /* ---------------------------------------------------------
-     Horizontal scroll — горизонтальная лента проектов
-  --------------------------------------------------------- */
-  const initHorizontalScroll = () => {
+     Hero — переливание баннера в следующий блок
+     (видео тонет и притемняется при скролле)
+     --------------------------------------------------------- */
+  const initHeroBlend = () => {
     if (reduceMotion || typeof ScrollTrigger === "undefined") return;
 
-    const section = document.getElementById("projects");
-    const track = document.getElementById("hscrollTrack");
-    if (!section || !track) return;
+    const hero = document.getElementById("hero");
+    if (!hero) return;
 
-    const getDistance = () => track.scrollWidth - window.innerWidth;
-    const isDesktop = () => window.innerWidth > 820;
-
-    const build = () => {
-      if (!isDesktop()) {
-        track.style.transform = "";
-        return false; // на мобильных — обычная вертикальная раскладка
-      }
-
-      const distance = getDistance();
-      if (distance <= 0) return false;
-
-      gsap.to(track, {
-        x: () => -distance,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => `+=${distance}`,
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          anticipatePin: 1,
-        },
-      });
-      return true;
-    };
-
-    ScrollTrigger.addEventListener("refreshInit", () => {
-      gsap.set(track, { x: 0 });
-    });
-
-    ScrollTrigger.refresh();
-    window.addEventListener("load", () => ScrollTrigger.refresh());
-
-    build();
-    // пересборка при смене ориентации/размера
-    window.addEventListener("resize", () => {
-      ScrollTrigger.refresh();
+    gsap.to(".hero__media", {
+      yPercent: 16,
+      scale: 1.08,
+      opacity: 0.25,
+      ease: "none",
+      scrollTrigger: {
+        trigger: hero,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
     });
   };
 
   /* ---------------------------------------------------------
-     Custom cursor + magnetic buttons (только fine pointer)
-  --------------------------------------------------------- */
-  const initCursor = () => {
+     Marquee — бесшовный цикл: дублируем набор тегов
+     (translateX(-50%) = ровно одна копия + gap)
+     --------------------------------------------------------- */
+  const initMarquee = () => {
+    document.querySelectorAll(".marquee__items").forEach((row) => {
+      const clone = Array.from(row.children).map((item) => {
+        const copy = item.cloneNode(true);
+        copy.setAttribute("aria-hidden", "true");
+        return copy;
+      });
+      clone.forEach((copy) => row.appendChild(copy));
+    });
+  };
+
+  /* ---------------------------------------------------------
+     Magnetic buttons (только fine pointer)
+     --------------------------------------------------------- */
+  const initMagneticButtons = () => {
     if (!finePointer || reduceMotion) return;
 
-    const cursor = document.getElementById("cursor");
-    const dot = cursor.querySelector(".cursor__dot");
-    const label = document.getElementById("cursorLabel");
-
-    const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    const target = { ...pos };
-
-    window.addEventListener("pointermove", (event) => {
-      target.x = event.clientX;
-      target.y = event.clientY;
-    }, { passive: true });
-
-    const render = () => {
-      pos.x = lerp(pos.x, target.x, 0.2);
-      pos.y = lerp(pos.y, target.y, 0.2);
-      cursor.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
-      window.requestAnimationFrame(render);
-    };
-    render();
-
-    document.addEventListener("pointerover", (event) => {
-      const interactive = event.target.closest("a, button");
-      const labelled = event.target.closest("[data-cursor]");
-
-      cursor.classList.toggle("is-link", Boolean(interactive));
-      cursor.classList.toggle("is-label", Boolean(labelled));
-      label.textContent = labelled ? labelled.dataset.cursor : "";
-    });
-
-    docEl.classList.add("has-cursor");
-
-    // Магнитные кнопки
     document.querySelectorAll("[data-magnetic]").forEach((btn) => {
       btn.addEventListener("pointermove", (event) => {
         const rect = btn.getBoundingClientRect();
@@ -336,8 +291,9 @@
     initSmoothScroll();
     initReveal();
     initCounters();
-    initHorizontalScroll();
-    initCursor();
+    initHeroBlend();
+    initMarquee();
+    initMagneticButtons();
     initGalleryParallax();
   };
 

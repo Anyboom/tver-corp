@@ -7,7 +7,7 @@
   <meta name="description" content="Т-информ — команда разработчиков из Твери. Энтерпрайз-решения, лэндинги, e-commerce, PWA и государственный сектор.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -25,16 +25,10 @@
   <!-- ===================== NOISE TEXTURE ===================== -->
   <div class="noise" aria-hidden="true"></div>
 
-  <!-- ===================== CUSTOM CURSOR ===================== -->
-  <div class="cursor" id="cursor" aria-hidden="true">
-    <div class="cursor__dot"></div>
-    <div class="cursor__label" id="cursorLabel"></div>
-  </div>
-
   <!-- ===================== NAV ===================== -->
   <header class="nav" id="nav">
     <div class="nav__in">
-      <a class="nav__logo" href="#top" data-cursor="top">
+      <a class="nav__logo" href="#top">
         <span class="nav__logo-mark" aria-hidden="true">Т</span>
         <span class="nav__logo-text">Т-информ</span>
       </a>
@@ -81,11 +75,6 @@
           <a class="btn btn--solid btn--lg" href="#footer" data-magnetic>Связаться с нами</a>
           <p class="hero__note">50 сотрудников · 100+ проектов</p>
         </div>
-      </div>
-
-      <div class="hero__scroll" data-reveal aria-hidden="true">
-        <span class="hero__scroll-text">листайте</span>
-        <span class="hero__scroll-line"></span>
       </div>
     </section>
 
@@ -145,85 +134,78 @@
         <h2 class="section-title" data-reveal>Сделано командой Т-информ</h2>
       </div>
 
-      <div class="hscroll" id="hscroll">
-        <div class="hscroll__track" id="hscrollTrack">
+      <div class="projects__grid" id="projectsGrid">
 
-          <article class="pcard pcard--lead">
-            <p class="pcard__lead">Крупные порталы, государственные системы и&nbsp;внутренние продукты&nbsp;— от&nbsp;идеи до&nbsp;продакшена.</p>
-            <p class="mono pcard__hint">листайте →</p>
-          </article>
-
-          <article class="pcard" data-cursor="открыть">
+          <article class="pcard">
             <div class="pcard__media"><img src="assets/img/p-cluster.png" alt="ИТ-Кластер" loading="lazy"></div>
             <div class="pcard__meta"><span class="mono">01</span><span class="pcard__badge">Портал</span></div>
             <h3 class="pcard__title">ИТ-Кластер</h3>
             <p class="pcard__desc">Многофункциональная портальная платформа, объединяющая ключевые сервисы участников инновационного процесса.</p>
           </article>
 
-          <article class="pcard" data-cursor="открыть">
+          <article class="pcard">
             <div class="pcard__media"><img src="assets/img/p-transport.svg" alt="Единый транспортный портал" loading="lazy"></div>
             <div class="pcard__meta"><span class="mono">02</span><span class="pcard__badge">Портал</span></div>
             <h3 class="pcard__title">Единый транспортный портал</h3>
             <p class="pcard__desc">Современный сайт о&nbsp;транспорте Москвы: карты, расписания, оплата штрафов и&nbsp;«Тройки».</p>
           </article>
 
-          <article class="pcard" data-cursor="открыть">
+          <article class="pcard">
             <div class="pcard__media"><img src="assets/img/p-moscow.svg" alt="Дело в Москве" loading="lazy"></div>
             <div class="pcard__meta"><span class="mono">03</span><span class="pcard__badge">Экосистема</span></div>
             <h3 class="pcard__title">Дело в Москве</h3>
             <p class="pcard__desc">Московская экосистема, объединяющая инструменты финансирования, обучения и&nbsp;нетворкинга для предпринимателей.</p>
           </article>
 
-          <article class="pcard" data-cursor="открыть">
+          <article class="pcard">
             <div class="pcard__media"><img src="assets/img/p-donor.svg" alt="ЯДонор" loading="lazy"></div>
             <div class="pcard__meta"><span class="mono">04</span><span class="pcard__badge">Веб-сервис</span></div>
             <h3 class="pcard__title">ЯДонор</h3>
             <p class="pcard__desc">Веб-портал и&nbsp;мобильные сервисы для планирования донаций и&nbsp;управления личным кабинетом донора.</p>
           </article>
 
-          <article class="pcard" data-cursor="открыть">
+          <article class="pcard">
             <div class="pcard__media"><img src="assets/img/p-moskino.svg" alt="Москино (МКП)" loading="lazy"></div>
             <div class="pcard__meta"><span class="mono">05</span><span class="pcard__badge">Портал</span></div>
             <h3 class="pcard__title">Москино (МКП)</h3>
             <p class="pcard__desc">Объединение сервисов для съёмок, проката, поддержки и&nbsp;развития кинематографа в&nbsp;одном портале.</p>
           </article>
 
-          <article class="pcard" data-cursor="открыть">
+          <article class="pcard">
             <div class="pcard__media"><img src="assets/img/p-academy.png" alt="Академия инноваторов" loading="lazy"></div>
             <div class="pcard__meta"><span class="mono">06</span><span class="pcard__badge">Платформа</span></div>
             <h3 class="pcard__title">Академия инноваторов</h3>
             <p class="pcard__desc">Цифровая платформа Московского инновационного кластера для развития технологических проектов и&nbsp;обучения предпринимателей.</p>
           </article>
 
-          <article class="pcard" data-cursor="открыть">
+          <article class="pcard">
             <div class="pcard__media"><img src="assets/img/p-sozd.svg" alt="СОЗД ГД РФ" loading="lazy"></div>
             <div class="pcard__meta"><span class="mono">07</span><span class="pcard__badge">Госсистема</span></div>
             <h3 class="pcard__title">СОЗД ГД&nbsp;РФ</h3>
             <p class="pcard__desc">Система обеспечения законодательной деятельности&nbsp;ГАС «Законотворчество».</p>
           </article>
 
-          <article class="pcard" data-cursor="открыть">
+          <article class="pcard">
             <div class="pcard__media pcard__media--dark"><img src="assets/img/p-brickcms.svg" alt="BrickCMS" loading="lazy"></div>
             <div class="pcard__meta"><span class="mono">08</span><span class="pcard__badge pcard__badge--internal">Внутренний продукт</span></div>
             <h3 class="pcard__title">BrickCMS</h3>
             <p class="pcard__desc">Бандл, позволяющий собирать страницы из&nbsp;готовых блоков и&nbsp;редактировать их&nbsp;в&nbsp;реальном времени.</p>
           </article>
 
-          <article class="pcard" data-cursor="открыть">
+          <article class="pcard">
             <div class="pcard__media pcard__media--dark"><img src="assets/img/p-forms.png" alt="Конструктор форм" loading="lazy"></div>
             <div class="pcard__meta"><span class="mono">09</span><span class="pcard__badge pcard__badge--internal">Внутренний продукт</span></div>
             <h3 class="pcard__title">Конструктор форм</h3>
             <p class="pcard__desc">Инструмент для создания и&nbsp;управления динамическими формами через интуитивный интерфейс.</p>
           </article>
 
-          <article class="pcard" data-cursor="открыть">
+          <article class="pcard">
             <div class="pcard__media pcard__media--dark"><img src="assets/img/p-admin.png" alt="Панель администрирования" loading="lazy"></div>
             <div class="pcard__meta"><span class="mono">10</span><span class="pcard__badge pcard__badge--internal">Внутренний продукт</span></div>
             <h3 class="pcard__title">Панель администрирования</h3>
             <p class="pcard__desc">Веб-интерфейс для управления ресурсами и&nbsp;данными сайта.</p>
           </article>
 
-        </div>
       </div>
     </section>
 
