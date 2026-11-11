@@ -603,55 +603,80 @@ html.no-js [data-reveal] {
 
 .pcard__desc { color: var(--text-dim); font-size: 0.92rem; line-height: 1.55; }
 
-/* ---------- Products ---------- */
-.products__list { display: grid; gap: 2px; margin-top: clamp(8px, 2vw, 24px); }
+/* ---------- Products (карточки) ---------- */
+.products__list {
+  margin-top: clamp(8px, 2vw, 24px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 28px);
+}
 
 .product {
-  display: grid;
-  grid-template-columns: 190px 1fr auto;
-  gap: clamp(20px, 4vw, 56px);
-  align-items: center;
-  padding: clamp(24px, 3.4vw, 44px) 0;
-  border-top: 1px solid var(--line);
-  transition: padding-left 0.4s var(--ease);
-}
-
-.product:last-child { border-bottom: 1px solid var(--line); }
-
-.product:hover { padding-left: 18px; }
-
-.product__media {
-  width: 100%;
-  aspect-ratio: 16/10;
-  border-radius: 14px;
-  overflow: hidden;
-  background: var(--bg-card);
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: clamp(24px, 2.6vw, 36px);
   border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--bg-soft);
+  overflow: clip;
+  transition: border-color 0.35s, transform 0.35s var(--ease);
 }
 
-.product__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease);
+.product:hover {
+  border-color: rgba(52, 227, 105, 0.5);
+  transform: translateY(-6px);
 }
 
-.product:hover .product__media img { transform: scale(1.05); }
+/* Акцентная линия снизу — только transform */
+.product::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s var(--ease);
+}
+
+.product:hover::before { transform: scaleX(1); }
+
+.product__index { color: var(--accent); }
 
 .product__title {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(1.15rem, 2vw, 1.6rem);
-  margin-bottom: 10px;
+  font-size: clamp(1.35rem, 1.9vw, 1.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  transition: transform 0.45s var(--ease);
 }
 
-.product__desc { color: var(--text-dim); max-width: 56ch; }
+.product:hover .product__title { transform: translateX(6px); }
+
+.product__desc {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.product__foot {
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
 
 .product__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 16px;
 }
 
 .product__tags li {
@@ -660,9 +685,48 @@ html.no-js [data-reveal] {
   border-radius: 999px;
   color: var(--text-dim);
   font-size: 0.68rem;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
 
-.product__index { color: var(--accent); }
+.product:hover .product__tags li {
+  background: var(--accent-dim);
+  border-color: rgba(52, 227, 105, 0.35);
+  color: var(--text);
+}
+
+/* Ghost-номер внутри карточки */
+.product__ghost {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  z-index: -1;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(4.5rem, 7vw, 7rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.13);
+  pointer-events: none;
+  transition: -webkit-text-stroke-color 0.4s;
+}
+
+.product:hover .product__ghost { -webkit-text-stroke-color: rgba(52, 227, 105, 0.55); }
+
+/* Стрелка — появляется на hover (только fine pointer) */
+.product__arrow {
+  color: var(--accent);
+  font-size: 1.8rem;
+  line-height: 1;
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.product:hover .product__arrow { opacity: 1; transform: translateX(0); }
+
+@media not ((hover: hover) and (pointer: fine)) {
+  .product__arrow { display: none; }
+}
 
 /* ---------- Technologies (стена стека) ---------- */
 .stackwall {
@@ -884,12 +948,8 @@ html.no-js [data-reveal] {
 
   .about__stats { grid-template-columns: 1fr; }
 
-  .product {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  .product__media { max-width: 320px; }
-  .product__index { display: none; }
+  .products__list { grid-template-columns: 1fr; gap: 14px; }
+  .product__ghost { font-size: 4.5rem; top: 12px; right: 16px; }
 
   .masonry { columns: 2; column-gap: 10px; }
 
