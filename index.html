@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Т-информ — Разработка сайтов и веб-сервисов полного цикла</title>
+  <meta name="description" content="Т-информ — команда разработчиков из Твери. Энтерпрайз-решения, лэндинги, e-commerce, PWA и государственный сектор.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- ===================== PRELOADER ===================== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__panel preloader__panel--left"></div>
+    <div class="preloader__panel preloader__panel--right"></div>
+    <div class="preloader__inner">
+      <div class="preloader__logo">Т-информ</div>
+      <div class="preloader__counter"><span id="preloaderCounter">0</span></div>
+    </div>
+  </div>
+
+  <!-- ===================== NOISE TEXTURE ===================== -->
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- ===================== CUSTOM CURSOR ===================== -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__label" id="cursorLabel"></div>
+  </div>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav" id="nav">
+    <div class="nav__in">
+      <a class="nav__logo" href="#top" data-cursor="top">
+        <span class="nav__logo-mark" aria-hidden="true">Т</span>
+        <span class="nav__logo-text">Т-информ</span>
+      </a>
+      <nav class="nav__links" aria-label="Основная навигация">
+        <a class="nav__link" href="#about" data-text="О компании">О компании</a>
+        <a class="nav__link" href="#projects" data-text="Проекты">Проекты</a>
+        <a class="nav__link" href="#products" data-text="Продукты">Продукты</a>
+        <a class="nav__link" href="#tech" data-text="Технологии">Технологии</a>
+      </nav>
+      <a class="btn btn--outline btn--sm" href="#" data-magnetic>Войти</a>
+      <button class="nav__burger" id="navBurger" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="mobile-menu__link" href="#about">О компании</a>
+    <a class="mobile-menu__link" href="#projects">Проекты</a>
+    <a class="mobile-menu__link" href="#products">Продукты</a>
+    <a class="mobile-menu__link" href="#tech">Технологии</a>
+    <a class="mobile-menu__link" href="#footer">Войти</a>
+  </div>
+
+  <main id="top">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero">
+      <div class="hero__media">
+        <video class="hero__video" autoplay muted loop playsinline poster="" aria-hidden="true">
+          <source src="assets/img/hero-video.webm" type="video/webm">
+        </video>
+        <div class="hero__veil"></div>
+      </div>
+
+      <div class="hero__inner container">
+        <p class="hero__tag" data-reveal>Тверь · с 2006 года</p>
+        <h1 class="hero__title" id="heroTitle">
+          <span class="hero__line">Разработка</span>
+          <span class="hero__line">сайтов и&nbsp;веб-сервисов</span>
+          <span class="hero__line hero__line--accent">полного цикла</span>
+        </h1>
+        <div class="hero__bottom" data-reveal>
+          <a class="btn btn--solid btn--lg" href="#footer" data-magnetic>Связаться с нами</a>
+          <p class="hero__note">50 сотрудников · 100+ проектов</p>
+        </div>
+      </div>
+
+      <div class="hero__scroll" data-reveal aria-hidden="true">
+        <span class="hero__scroll-text">листайте</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="section-head__index">01</span>
+          <span class="section-head__label">О компании</span>
+        </div>
+
+        <div class="about__grid">
+          <div class="about__copy">
+            <p class="about__lead" data-reveal>Мы&nbsp;— увлечённая команда разработчиков, которой искренне нравится создавать удобные веб-продукты.</p>
+            <p class="about__sub" data-reveal>Наши продукты строятся на&nbsp;современных фреймворках, продуманной архитектуре и&nbsp;адаптивных интерфейсах.</p>
+
+            <ul class="about__vectors" data-reveal>
+              <li><span class="mono">/</span> Энтерпрайз</li>
+              <li><span class="mono">/</span> Лэндинги</li>
+              <li><span class="mono">/</span> E-commerce</li>
+              <li><span class="mono">/</span> PWA-приложения</li>
+              <li><span class="mono">/</span> Государственный сектор</li>
+            </ul>
+          </div>
+
+          <div class="about__stats">
+            <div class="stat" data-reveal>
+              <span class="stat__num" data-count="20">0</span>
+              <span class="stat__label">лет в&nbsp;индустрии</span>
+            </div>
+            <div class="stat" data-reveal>
+              <span class="stat__num" data-count="50">0</span>
+              <span class="stat__label">сотрудников</span>
+            </div>
+            <div class="stat" data-reveal>
+              <span class="stat__num" data-count="100">0</span>
+              <span class="stat__label">реализованных проектов</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__video-frame" data-reveal>
+          <video class="about__video" autoplay muted loop playsinline aria-hidden="true">
+            <source src="assets/img/about-video.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS (horizontal) ===================== -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="section-head__index">02</span>
+          <span class="section-head__label">Проекты</span>
+        </div>
+        <h2 class="section-title" data-reveal>Сделано командой Т-информ</h2>
+      </div>
+
+      <div class="hscroll" id="hscroll">
+        <div class="hscroll__track" id="hscrollTrack">
+
+          <article class="pcard pcard--lead">
+            <p class="pcard__lead">Крупные порталы, государственные системы и&nbsp;внутренние продукты&nbsp;— от&nbsp;идеи до&nbsp;продакшена.</p>
+            <p class="mono pcard__hint">листайте →</p>
+          </article>
+
+          <article class="pcard" data-cursor="открыть">
+            <div class="pcard__media"><img src="assets/img/p-cluster.png" alt="ИТ-Кластер" loading="lazy"></div>
+            <div class="pcard__meta"><span class="mono">01</span><span class="pcard__badge">Портал</span></div>
+            <h3 class="pcard__title">ИТ-Кластер</h3>
+            <p class="pcard__desc">Многофункциональная портальная платформа, объединяющая ключевые сервисы участников инновационного процесса.</p>
+          </article>
+
+          <article class="pcard" data-cursor="открыть">
+            <div class="pcard__media"><img src="assets/img/p-transport.svg" alt="Единый транспортный портал" loading="lazy"></div>
+            <div class="pcard__meta"><span class="mono">02</span><span class="pcard__badge">Портал</span></div>
+            <h3 class="pcard__title">Единый транспортный портал</h3>
+            <p class="pcard__desc">Современный сайт о&nbsp;транспорте Москвы: карты, расписания, оплата штрафов и&nbsp;«Тройки».</p>
+          </article>
+
+          <article class="pcard" data-cursor="открыть">
+            <div class="pcard__media"><img src="assets/img/p-moscow.svg" alt="Дело в Москве" loading="lazy"></div>
+            <div class="pcard__meta"><span class="mono">03</span><span class="pcard__badge">Экосистема</span></div>
+            <h3 class="pcard__title">Дело в Москве</h3>
+            <p class="pcard__desc">Московская экосистема, объединяющая инструменты финансирования, обучения и&nbsp;нетворкинга для предпринимателей.</p>
+          </article>
+
+          <article class="pcard" data-cursor="открыть">
+            <div class="pcard__media"><img src="assets/img/p-donor.svg" alt="ЯДонор" loading="lazy"></div>
+            <div class="pcard__meta"><span class="mono">04</span><span class="pcard__badge">Веб-сервис</span></div>
+            <h3 class="pcard__title">ЯДонор</h3>
+            <p class="pcard__desc">Веб-портал и&nbsp;мобильные сервисы для планирования донаций и&nbsp;управления личным кабинетом донора.</p>
+          </article>
+
+          <article class="pcard" data-cursor="открыть">
+            <div class="pcard__media"><img src="assets/img/p-moskino.svg" alt="Москино (МКП)" loading="lazy"></div>
+            <div class="pcard__meta"><span class="mono">05</span><span class="pcard__badge">Портал</span></div>
+            <h3 class="pcard__title">Москино (МКП)</h3>
+            <p class="pcard__desc">Объединение сервисов для съёмок, проката, поддержки и&nbsp;развития кинематографа в&nbsp;одном портале.</p>
+          </article>
+
+          <article class="pcard" data-cursor="открыть">
+            <div class="pcard__media"><img src="assets/img/p-academy.png" alt="Академия инноваторов" loading="lazy"></div>
+            <div class="pcard__meta"><span class="mono">06</span><span class="pcard__badge">Платформа</span></div>
+            <h3 class="pcard__title">Академия инноваторов</h3>
+            <p class="pcard__desc">Цифровая платформа Московского инновационного кластера для развития технологических проектов и&nbsp;обучения предпринимателей.</p>
+          </article>
+
+          <article class="pcard" data-cursor="открыть">
+            <div class="pcard__media"><img src="assets/img/p-sozd.svg" alt="СОЗД ГД РФ" loading="lazy"></div>
+            <div class="pcard__meta"><span class="mono">07</span><span class="pcard__badge">Госсистема</span></div>
+            <h3 class="pcard__title">СОЗД ГД&nbsp;РФ</h3>
+            <p class="pcard__desc">Система обеспечения законодательной деятельности&nbsp;ГАС «Законотворчество».</p>
+          </article>
+
+          <article class="pcard" data-cursor="открыть">
+            <div class="pcard__media pcard__media--dark"><img src="assets/img/p-brickcms.svg" alt="BrickCMS" loading="lazy"></div>
+            <div class="pcard__meta"><span class="mono">08</span><span class="pcard__badge pcard__badge--internal">Внутренний продукт</span></div>
+            <h3 class="pcard__title">BrickCMS</h3>
+            <p class="pcard__desc">Бандл, позволяющий собирать страницы из&nbsp;готовых блоков и&nbsp;редактировать их&nbsp;в&nbsp;реальном времени.</p>
+          </article>
+
+          <article class="pcard" data-cursor="открыть">
+            <div class="pcard__media pcard__media--dark"><img src="assets/img/p-forms.png" alt="Конструктор форм" loading="lazy"></div>
+            <div class="pcard__meta"><span class="mono">09</span><span class="pcard__badge pcard__badge--internal">Внутренний продукт</span></div>
+            <h3 class="pcard__title">Конструктор форм</h3>
+            <p class="pcard__desc">Инструмент для создания и&nbsp;управления динамическими формами через интуитивный интерфейс.</p>
+          </article>
+
+          <article class="pcard" data-cursor="открыть">
+            <div class="pcard__media pcard__media--dark"><img src="assets/img/p-admin.png" alt="Панель администрирования" loading="lazy"></div>
+            <div class="pcard__meta"><span class="mono">10</span><span class="pcard__badge pcard__badge--internal">Внутренний продукт</span></div>
+            <h3 class="pcard__title">Панель администрирования</h3>
+            <p class="pcard__desc">Веб-интерфейс для управления ресурсами и&nbsp;данными сайта.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PRODUCTS ===================== -->
+    <section class="products section" id="products">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="section-head__index">03</span>
+          <span class="section-head__label">Продукты</span>
+        </div>
+        <h2 class="section-title" data-reveal>Внутренние инструменты</h2>
+        <p class="section-sub" data-reveal>Собственные продукты, на&nbsp;которых мы&nbsp;собираем и&nbsp;поддерживаем проекты клиентов.</p>
+
+        <div class="products__list">
+          <div class="product" data-reveal>
+            <div class="product__media"><img src="assets/img/p-brickcms.svg" alt="" loading="lazy"></div>
+            <div class="product__body">
+              <h3 class="product__title">BrickCMS</h3>
+              <p class="product__desc">Бандл, позволяющий создавать страницы из&nbsp;заранее оформленных блоков&nbsp;— редактирование происходит в&nbsp;реальном времени в&nbsp;конструкторе.</p>
+              <ul class="product__tags mono"><li>Vue</li><li>Vite</li><li>Drag-and-drop</li></ul>
+            </div>
+            <span class="product__index mono">P.01</span>
+          </div>
+
+          <div class="product" data-reveal>
+            <div class="product__media"><img src="assets/img/p-forms.png" alt="" loading="lazy"></div>
+            <div class="product__body">
+              <h3 class="product__title">Конструктор форм</h3>
+              <p class="product__desc">Инструмент для создания и&nbsp;управления динамическими формами с&nbsp;помощью интуитивного интерфейса.</p>
+              <ul class="product__tags mono"><li>Формы</li><li>Валидация</li><li>Реальное время</li></ul>
+            </div>
+            <span class="product__index mono">P.02</span>
+          </div>
+
+          <div class="product" data-reveal>
+            <div class="product__media"><img src="assets/img/p-admin.png" alt="" loading="lazy"></div>
+            <div class="product__body">
+              <h3 class="product__title">Панель администрирования</h3>
+              <p class="product__desc">Веб-интерфейс для управления ресурсами и&nbsp;данными сайта.</p>
+              <ul class="product__tags mono"><li>Управление</li><li>Роли</li><li>Медиа</li></ul>
+            </div>
+            <span class="product__index mono">P.03</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TECHNOLOGIES ===================== -->
+    <section class="tech section" id="tech">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="section-head__index">04</span>
+          <span class="section-head__label">Технологии</span>
+        </div>
+        <h2 class="section-title" data-reveal>Стек, который держит нагрузку</h2>
+      </div>
+
+      <div class="marquee" data-reveal>
+        <div class="marquee__row" data-speed="slow">
+          <div class="marquee__items">
+            <span>GoLang</span><span>PHP</span><span>Python</span><span>Java</span><span>C#</span><span>JavaScript</span><span>TypeScript</span>
+          </div>
+        </div>
+        <div class="marquee__row" data-direction="reverse">
+          <div class="marquee__items">
+            <span>PostgreSQL</span><span>MongoDB</span><span>MySQL</span><span>MariaDB</span><span>Redis</span><span>ClickHouse</span><span>MS&nbsp;SQL</span>
+          </div>
+        </div>
+        <div class="marquee__row">
+          <div class="marquee__items">
+            <span>Symfony</span><span>Vue</span><span>Node.js</span><span>React</span><span>Spring</span><span>PrimeVue</span><span>Tailwind&nbsp;CSS</span><span>Vite</span><span>Next</span><span>Quasar</span>
+          </div>
+        </div>
+        <div class="marquee__row" data-direction="reverse">
+          <div class="marquee__items">
+            <span>Docker</span><span>Kubernetes</span><span>GitLab</span><span>Grafana</span><span>Maven</span><span>Prometheus</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech__ai container">
+        <div class="tech__ai-card" data-reveal>
+          <p class="mono tech__ai-label">ИИ-инструменты</p>
+          <ul class="tech__ai-list">
+            <li>LLM</li><li>MCP</li><li>RAG</li><li>Multi-Agent Systems</li><li>Agent Orchestration</li>
+          </ul>
+        </div>
+        <div class="tech__ai-card" data-reveal>
+          <p class="mono tech__ai-label">Агентская разработка ПО</p>
+          <ul class="tech__ai-list">
+            <li>Code Generation</li><li>Code Review</li><li>Test Generation</li><li>Autonomous Debugging</li><li>Task Planning</li><li>CI/CD Automation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="gallery section" id="gallery">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="section-head__index">05</span>
+          <span class="section-head__label">Команда</span>
+        </div>
+        <h2 class="section-title" data-reveal>Люди за&nbsp;кодом</h2>
+      </div>
+
+      <div class="masonry container" id="masonry">
+        <figure class="masonry__item" data-reveal><img src="assets/gallery/g01.jpg" alt="Команда Т-информ" loading="lazy"></figure>
+        <figure class="masonry__item" data-reveal><img src="assets/gallery/g02.jpg" alt="Команда Т-информ" loading="lazy"></figure>
+        <figure class="masonry__item" data-reveal><img src="assets/gallery/g03.jpg" alt="Команда Т-информ" loading="lazy"></figure>
+        <figure class="masonry__item" data-reveal><img src="assets/gallery/g04.jpg" alt="Команда Т-информ" loading="lazy"></figure>
+        <figure class="masonry__item" data-reveal><img src="assets/gallery/g05.jpg" alt="Команда Т-информ" loading="lazy"></figure>
+        <figure class="masonry__item" data-reveal><img src="assets/gallery/g06.jpg" alt="Команда Т-информ" loading="lazy"></figure>
+        <figure class="masonry__item" data-reveal><img src="assets/gallery/g07.jpg" alt="Команда Т-информ" loading="lazy"></figure>
+        <figure class="masonry__item" data-reveal><img src="assets/gallery/g08.jpg" alt="Команда Т-информ" loading="lazy"></figure>
+        <figure class="masonry__item" data-reveal><img src="assets/gallery/g09.jpg" alt="Команда Т-информ" loading="lazy"></figure>
+        <figure class="masonry__item" data-reveal><img src="assets/gallery/g10.jpg" alt="Команда Т-информ" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer section" id="footer">
+      <div class="container">
+        <div class="footer__cta" data-reveal>
+          <p class="mono footer__cta-label">Есть задача?</p>
+          <a class="footer__cta-title" href="mailto:info@tinform.ru">Обсудим проект</a>
+        </div>
+
+        <div class="footer__grid" data-reveal>
+          <div class="footer__col">
+            <p class="footer__brand">Т-информ</p>
+            <p class="footer__note">Разработка сайтов<br>и&nbsp;веб-сервисов полного цикла.<br>Тверь, с&nbsp;2006&nbsp;года.</p>
+          </div>
+
+          <div class="footer__col">
+            <p class="mono footer__col-label">Контакты</p>
+            <ul class="footer__contacts">
+              <li><img src="assets/img/icon-phone.svg" alt="" aria-hidden="true"><a href="tel:+79201612217">+7 920 161-22-17</a></li>
+              <li><img src="assets/img/icon-email.svg" alt="" aria-hidden="true"><a href="mailto:info@tinform.ru">info@tinform.ru</a></li>
+              <li><img src="assets/img/icon-pin.svg" alt="" aria-hidden="true"><span>г.&nbsp;Тверь, ул.&nbsp;1-я&nbsp;Суворова, д.&nbsp;1, оф.&nbsp;402</span></li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <p class="mono footer__col-label">Навигация</p>
+            <ul class="footer__links">
+              <li><a href="#about">О компании</a></li>
+              <li><a href="#projects">Проекты</a></li>
+              <li><a href="#products">Продукты</a></li>
+              <li><a href="#tech">Технологии</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__legal" data-reveal>
+          <span>© 2006&nbsp;— 2026 Т-информ. Все права защищены.</span>
+          <span class="mono">ИНН 7728793823 · ОГРН 5117746033026 · КПП 772801001</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
