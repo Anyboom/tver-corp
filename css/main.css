@@ -363,9 +363,15 @@ html.no-js [data-reveal],
   display: flex;
   align-items: flex-end;
   overflow: clip;
+  margin-bottom: calc(-1 * clamp(60px, 9vh, 120px)); /* баннер заходит под след. блок и тает в нём */
 }
 
-.hero__media { position: absolute; inset: 0; }
+.hero__media {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(180deg, #000 70%, transparent 92%);
+  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 92%);
+}
 
 .hero__video {
   width: 100%;
@@ -382,9 +388,9 @@ html.no-js [data-reveal],
     180deg,
     rgba(20, 21, 20, 0.55) 0%,
     rgba(20, 21, 20, 0.1) 38%,
-    rgba(20, 21, 20, 0.35) 60%,
-    rgba(20, 21, 20, 0.82) 80%,
-    var(--bg) 100%
+    rgba(20, 21, 20, 0.28) 62%,
+    rgba(20, 21, 20, 0.6) 85%,
+    rgba(20, 21, 20, 0.82) 100%
   );
 }
 
@@ -436,6 +442,11 @@ html.no-js [data-reveal],
 }
 
 /* ---------- About (bento) ---------- */
+.about {
+  position: relative;
+  z-index: 1; /* контент поверх заходящего под него баннера */
+}
+
 .about__grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
