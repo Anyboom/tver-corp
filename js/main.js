@@ -9,9 +9,7 @@
   const docEl = document.documentElement;
   docEl.classList.remove("no-js");
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  if (reduceMotion) docEl.classList.add("no-motion");
 
   const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -32,12 +30,6 @@
       window.setTimeout(() => preloader.remove(), 1000);
       startHeroIntro();
     };
-
-    if (reduceMotion) {
-      window.addEventListener("load", finish, { once: true });
-      window.setTimeout(finish, 600); // страховка
-      return;
-    }
 
     // Счётчик тикает от 0 до 100; завершение не раньше реальной загрузки страницы
     let progress = 0;
@@ -65,7 +57,7 @@
      Lenis — инерционный скролл + синхронизация со ScrollTrigger
   --------------------------------------------------------- */
   const initSmoothScroll = () => {
-    if (reduceMotion || typeof Lenis === "undefined") return null;
+    if (typeof Lenis === "undefined") return null;
 
     const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
     lenis.on("scroll", () => window.ScrollTrigger && ScrollTrigger.update());
@@ -141,7 +133,7 @@
   };
 
   const startHeroIntro = () => {
-    if (reduceMotion || typeof gsap === "undefined") return;
+    if (typeof gsap === "undefined") return;
 
     const lines = document.querySelectorAll("#heroTitle .hero__line");
     const stagger = 0.055;
@@ -165,7 +157,7 @@
      Reveal — появление секций при скролле
   --------------------------------------------------------- */
   const initReveal = () => {
-    if (reduceMotion || typeof ScrollTrigger === "undefined") return;
+    if (typeof ScrollTrigger === "undefined") return;
 
     gsap.utils.toArray("[data-reveal]").forEach((el) => {
       gsap.to(el, {
@@ -185,8 +177,6 @@
     document.querySelectorAll("[data-count]").forEach((el) => {
       const end = parseInt(el.dataset.count, 10);
 
-      if (reduceMotion) { el.textContent = String(end); return; }
-
       const proxy = { value: 0 };
       gsap.to(proxy, {
         value: end,
@@ -203,7 +193,7 @@
      (видео тонет и притемняется при скролле)
      --------------------------------------------------------- */
   const initHeroBlend = () => {
-    if (reduceMotion || typeof ScrollTrigger === "undefined") return;
+    if (typeof ScrollTrigger === "undefined") return;
 
     const hero = document.getElementById("hero");
     if (!hero) return;
@@ -242,7 +232,7 @@
      Magnetic buttons (только fine pointer)
      --------------------------------------------------------- */
   const initMagneticButtons = () => {
-    if (!finePointer || reduceMotion) return;
+    if (!finePointer) return;
 
     document.querySelectorAll("[data-magnetic]").forEach((btn) => {
       btn.addEventListener("pointermove", (event) => {
@@ -261,7 +251,7 @@
      Gallery — лёгкий параллакс карточек
   --------------------------------------------------------- */
   const initGalleryParallax = () => {
-    if (reduceMotion || typeof ScrollTrigger === "undefined") return;
+    if (typeof ScrollTrigger === "undefined") return;
 
     gsap.utils.toArray(".masonry__item").forEach((item, index) => {
       const speed = index % 3 === 0 ? 1.06 : index % 3 === 1 ? 1 : 1.03;

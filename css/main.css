@@ -350,8 +350,7 @@ body.is-locked { overflow: hidden; }
   transform: translateY(34px);
 }
 
-html.no-js [data-reveal],
-.no-motion [data-reveal] {
+html.no-js [data-reveal] {
   opacity: 1;
   transform: none;
 }
@@ -423,7 +422,6 @@ html.no-js [data-reveal],
 
 .hero__line .word { display: inline-block; overflow: clip; vertical-align: top; }
 .hero__line .word > span { display: inline-block; transform: translateY(110%); }
-.no-motion .hero__line .word > span { transform: none; }
 
 .hero__bottom {
   display: flex;
@@ -666,22 +664,42 @@ html.no-js [data-reveal],
 
 .product__index { color: var(--accent); }
 
-/* ---------- Technologies ---------- */
-.marquee {
-  display: grid;
-  gap: 0;
+/* ---------- Technologies (стена стека) ---------- */
+.stackwall {
   border-block: 1px solid var(--line);
-  padding-block: 8px;
-  overflow: clip;
+  margin-top: clamp(24px, 4vw, 56px);
 }
 
-.marquee__row {
-  overflow: clip;
-  padding-block: 10px;
+.stackwall__row {
+  display: grid;
+  grid-template-columns: clamp(120px, 15vw, 240px) 1fr;
   border-bottom: 1px solid var(--line);
+  transition: background 0.35s;
 }
 
-.marquee__row:last-child { border-bottom: 0; }
+.stackwall__row:last-child { border-bottom: 0; }
+
+.stackwall__row:hover { background: rgba(255, 255, 255, 0.025); }
+
+.stackwall__label {
+  display: flex;
+  align-items: center;
+  padding: clamp(14px, 2vw, 26px) clamp(14px, 2vw, 28px);
+  border-right: 1px solid var(--line);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: color 0.3s;
+}
+
+.stackwall__row:hover .stackwall__label { color: var(--text); }
+
+.stackwall__row .marquee__row {
+  overflow: clip;
+  border-bottom: 0;
+  padding-block: clamp(10px, 1.6vw, 20px);
+}
 
 .marquee__items {
   display: flex;
@@ -692,7 +710,6 @@ html.no-js [data-reveal],
   will-change: transform;
 }
 
-.marquee__row[data-speed="slow"] .marquee__items { animation-duration: 56s; }
 .marquee__row[data-direction="reverse"] .marquee__items { animation-direction: reverse; }
 
 .marquee__row:hover .marquee__items { animation-play-state: paused; }
@@ -713,43 +730,10 @@ html.no-js [data-reveal],
   to { transform: translateX(-50%); }
 }
 
-.no-motion .marquee__items { animation: none; }
-
-.tech__ai {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(16px, 2.4vw, 32px);
-  margin-top: clamp(40px, 6vw, 72px);
+@media (max-width: 820px) {
+  .stackwall__row { grid-template-columns: 96px 1fr; }
+  .stackwall__label { font-size: 0.62rem; padding: 10px 12px; }
 }
-
-.tech__ai-card {
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: clamp(24px, 3vw, 40px);
-  background: linear-gradient(160deg, var(--bg-soft), transparent 75%);
-  transition: border-color 0.35s;
-}
-
-.tech__ai-card:hover { border-color: rgba(52, 227, 105, 0.45); }
-
-.tech__ai-label { color: var(--accent); margin-bottom: 20px; }
-
-.tech__ai-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.tech__ai-list li {
-  padding: 9px 18px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: 0.92rem;
-  background: rgba(255, 255, 255, 0.02);
-  transition: border-color 0.3s, background 0.3s;
-}
-
-.tech__ai-list li:hover { border-color: var(--accent); background: var(--accent-dim); }
 
 /* ---------- Gallery ---------- */
 .masonry {
@@ -860,7 +844,6 @@ html.no-js [data-reveal],
   .about__stats { grid-column: 1 / -1; }
 
   .about__stats { grid-template-columns: repeat(3, 1fr); }
-  .tech__ai { grid-template-columns: 1fr; }
   .masonry { columns: 2; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .projects__grid { grid-template-columns: repeat(2, 1fr); }
@@ -913,14 +896,3 @@ html.no-js [data-reveal],
   .footer__grid { grid-template-columns: 1fr; }
 }
 
-/* ============================================================
-   Reduced motion
-   ============================================================ */
-@media (prefers-reduced-motion: reduce) {
-  .noise { animation: none; }
-  .marquee__items { animation: none; }
-  *, *::before, *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
-}
